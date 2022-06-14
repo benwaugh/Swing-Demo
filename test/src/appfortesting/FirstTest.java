@@ -34,6 +34,11 @@ public class FirstTest extends AssertJSwingJUnitTestCase {
 		fixtureControlFrame.button(matcher).click();
 	}
 
+	@Test
+	public void testMenu() {
+		fixtureControlFrame.menuItem("exit").click();
+	}
+	
 	@Override
 	protected void onSetUp() throws Exception {
 		application(Main.class).start();
