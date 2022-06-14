@@ -36,7 +36,7 @@ public class FirstTest extends AssertJSwingJUnitTestCase {
 
 	@Test
 	public void testMenu() {
-		fixtureControlFrame.menuItem("exit").click();
+		fixtureControlFrame.menuItemWithPath("Application","Exit").click();
 	}
 	
 	@Override
