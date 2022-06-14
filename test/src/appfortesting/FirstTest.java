@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.awt.Frame;
 
+import javax.swing.JButton;
+
 import org.assertj.swing.core.GenericTypeMatcher;
 import org.assertj.swing.fixture.FrameFixture;
 import org.assertj.swing.junit.testcase.AssertJSwingJUnitTestCase;
@@ -17,8 +19,19 @@ public class FirstTest extends AssertJSwingJUnitTestCase {
 	private FrameFixture fixtureControlFrame;
 
 	@Test
-	public void test() throws InterruptedException {
+	public void controlFrameHasLabel() {
 		fixtureControlFrame.label().requireText("A Label");
+	}
+	
+	@Test
+	public void canClickGoButton() {
+		// Find correct button using its text rather than its name.
+		GenericTypeMatcher<? extends JButton> matcher = new GenericTypeMatcher<JButton>(JButton.class) {
+			@Override
+			protected boolean isMatching(JButton button) {
+				return "Go!".equals(button.getText());
+			}};
+		fixtureControlFrame.button(matcher).click();
 	}
 
 	@Override
